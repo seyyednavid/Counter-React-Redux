@@ -5,24 +5,27 @@ const Counter = () => {
   /* By using useSelector, react-redux automatically 
   set up subscription to the redux store for this component */
   const counter = useSelector((state) => state.counter);
+  const show = useSelector((state) => state.showCounter);
   const dispatch = useDispatch();
 
   const incrementHandler = () => {
     dispatch({ type: "increment" });
   };
   const increaseByFiveHandler = () => {
-    dispatch({type:"increase" , amount: 5})
-  }
+    dispatch({ type: "increase", amount: 5 });
+  };
   const decrementHandler = () => {
     dispatch({ type: "decrement" });
   };
 
-  const toggleCounterHandler = () => {};
+  const toggleCounterHandler = () => {
+    dispatch({ type: "toggle" });
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
+      {show && <div className={classes.value}>{counter}</div>}
       <div>
         <button onClick={incrementHandler}>Increment</button>
         <button onClick={increaseByFiveHandler}>Increment by 5</button>
