@@ -5,8 +5,8 @@ import classes from "./Counter.module.css";
 const Counter = () => {
   /* By using useSelector, react-redux automatically 
   set up subscription to the redux store for this component */
-  const counter = useSelector((state) => state.counter);
-  const show = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const show = useSelector((state) => state.counter.showCounter);
   const dispatch = useDispatch();
 
   const incrementHandler = () => {
